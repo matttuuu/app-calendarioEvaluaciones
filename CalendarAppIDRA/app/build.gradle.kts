@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.calendarapp_idra"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.calendarapp_idra"
