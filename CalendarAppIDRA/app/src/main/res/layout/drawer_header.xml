@@ -5,21 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--Este xml representa nuestro header principal de la aplicacion-->
-    <!--Se presenta justo abajo del toolbar (basicamente una barra donde estan las opciones de navegacion)-->
-
+    <!--Este xml representa nuestro header "principal" dentro del toolbar-->
+    <!--Si queremos, podemos crear otro igual para colocar imagenes, texto, etc-->
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="64dp"
-        android:background="#579051"
+        android:layout_width="410dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="4dp"
 
+        android:background="#35B6EA"
         android:padding="20dp"
-        android:text="TextView"
-        android:textSize="30sp"
+        android:text="Sabado, 28 de Octubre de 2023"
+        android:textAlignment="textStart"
+        android:textSize="17sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

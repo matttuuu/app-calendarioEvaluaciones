@@ -11,7 +11,7 @@
         android:layout_width="0dp"
 
         android:layout_height="?attr/actionBarSize"
-        android:background="#A2A2A2"
+        android:background="#35B6EA"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
 
         app:layout_constraintEnd_toEndOf="parent"
