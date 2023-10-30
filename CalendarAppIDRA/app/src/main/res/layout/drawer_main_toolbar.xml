@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--Nuestro toolbar con el menu correspondiente-->
+    <!--Nuestro toolbar principal que aparece en todas las vistas (el banner que contiene el menu desplegable)-->
     <androidx.appcompat.widget.Toolbar
 
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-
+        
         android:layout_height="?attr/actionBarSize"
-        android:background="#35B6EA"
+        android:background="#8634C2"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
 
         app:layout_constraintEnd_toEndOf="parent"

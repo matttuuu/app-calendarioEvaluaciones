@@ -13,7 +13,7 @@
         android:layout_height="65dp"
         android:layout_marginTop="4dp"
 
-        android:background="#35B6EA"
+        android:background="#8634C2"
         android:padding="20dp"
         android:text="Sabado, 28 de Octubre de 2023"
         android:textAlignment="textStart"
