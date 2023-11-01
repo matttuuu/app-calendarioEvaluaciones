@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1010242286825",
+    "project_id": "calendarapp-idra",
+    "storage_bucket": "calendarapp-idra.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010242286825:android:6000e2f5fba70939b82c78",
+        "android_client_info": {
+          "package_name": "com.example.calendarapp_idra"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXH5zjCUv0FuuU3GkeNs-FA-MuOmjfeYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

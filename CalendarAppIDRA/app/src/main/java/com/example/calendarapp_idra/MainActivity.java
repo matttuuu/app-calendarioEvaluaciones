@@ -13,8 +13,19 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.Firebase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 import Fragments.MonthlyFragment;
 import Fragments.WeeklyFragment;
@@ -29,6 +40,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
+
+
+    //Declaracion de variable para utilizar db
+    //private FirebaseFirestore db= FirebaseFirestore.getInstance();
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+
+    //*variables temporales de elementos para guardar en la base de datos*
+    EditText etNombre = findViewById(R.id.tempEt1); //logcat error line 52 ???
+    EditText etApellido = findViewById(R.id.tempEt2);
+    Button btnSaveToDb = findViewById(R.id.buttonSaveTemp);
+    //*
 
 
     @Override
@@ -52,6 +76,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container,new MonthlyFragment());
         fragmentTransaction.commit();
+
+
+
+        //Para guardar en db
+        firebaseDatabase = firebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+
+
+
     }
 
     @Override
@@ -77,5 +110,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void NextMonth(View view) {
+    }
+
+
+    public void saveToDb(View view) {
+        String nom = this.etNombre.getText().toString();
+        String ap = this.etApellido.getText().toString();
+
+        HashMap <String,Object> hashmap = new HashMap<>();
+        hashmap.put("nombre",nom);
+        hashmap.put("apellido",ap);
+        databaseReference.child("Eventos")
+                .child(nom)
+                .child(ap)
+                .setValue(hashmap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText( MainActivity.this,"Operacion Exitosa",Toast.LENGTH_SHORT).show();
+
+                    }
+
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this,"Operacion fallida: "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+    {
+
+        }
+
+
+
+
+
+
     }
 }
