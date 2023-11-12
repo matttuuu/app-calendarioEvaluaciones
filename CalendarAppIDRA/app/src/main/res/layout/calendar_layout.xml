@@ -16,7 +16,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/previousBtn"
-            android:background="@mipmap/leftBtn"
+            android:background="@mipmap/leftbtn"
             android:layout_margin="10dp"
             />
         <TextView
@@ -25,15 +25,16 @@
             android:gravity="center"
             android:layout_marginTop="4dp"
             android:text="CurrentDate"
+            android:id="@+id/current_Date"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:layout_weight="3" />
+            android:layout_weight="3"/>
         <ImageButton
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/nextBtn"
-            android:background="@mipmap/rightBtn"
+            android:background="@mipmap/rightbtn"
             android:layout_margin="10dp"
             />
     </LinearLayout>
