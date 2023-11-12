@@ -18,14 +18,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import
 public class CustomCalendarView extends LinearLayout {
     ImageButton nextButton, previousButton;
     TextView currentDate;
     GridView gridView;
 
     private static final int MAX_CALENDAR_DAYS = 42;
-    Calendar calendar = Calendar.getInstance()(Locale.ENGLISH);
+    Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
     Context context;
     SimpleDateFormat dataFormat = new SimpleDateFormat("MMMM yyyy", Locale.ENGLISH);
     SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.ENGLISH);
@@ -42,7 +41,7 @@ public class CustomCalendarView extends LinearLayout {
         super(context, attrs);
         this.context = context;
         InitializeLayout();
-
+        SetUpCalendar();
         previousButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
