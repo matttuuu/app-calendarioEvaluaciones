@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         tooolbar = findViewById(R.id.toolbar); //Referenciamos la variable de objeto toolbar al que tenemos en la vista main
         setSupportActionBar(tooolbar);
-        customCalendarView = (CustomCalendarView)findViewById(R.id.custom_calendar_view);
+        customCalendarView = (CustomCalendarView)findViewById(R.id.custom_calendar_view); //CALENDAR VIEW
         drawerLayout = findViewById(R.id.drawer); //Realizamos lo mismo :)
         navigationView = findViewById(R.id.navigationView);
         //onclick al navigationView
