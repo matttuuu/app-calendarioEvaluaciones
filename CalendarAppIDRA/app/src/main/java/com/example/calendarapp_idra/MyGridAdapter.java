@@ -50,7 +50,7 @@ public class MyGridAdapter extends ArrayAdapter {
 
         View view = convertView;
         if (view == null) {
-            view = inflater.inflate(R.layout.single_cell_layout, null);
+            view = inflater.inflate(R.layout.single_cell_layout, parent, false);
 
 
         }
@@ -62,10 +62,10 @@ public class MyGridAdapter extends ArrayAdapter {
             view.setBackgroundColor(Color.parseColor("#cccccc"));
         }
 
-        TextView Day_Number = convertView.findViewById(R.id.calendar_day);
+        TextView Day_Number = view.findViewById(R.id.calendar_day);
         Day_Number.setText(String.valueOf(DayNo));
 
-        return convertView;
+        return view;
     }
 
     @Override

@@ -40,6 +40,9 @@ public class CustomCalendarView extends LinearLayout {
     SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.ENGLISH);
     SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.ENGLISH);
 
+
+
+    MyGridAdapter myGridAdapter;
     AlertDialog alertDialog;
     List<Date> dates = new ArrayList<>();
     List<Events> eventsList = new ArrayList<>();
@@ -124,6 +127,8 @@ public class CustomCalendarView extends LinearLayout {
         });
 
 
+
+
     }
 
 
@@ -133,7 +138,7 @@ public class CustomCalendarView extends LinearLayout {
 
     private void SaveEvent (String event, String time, String date, String month, String year){
 
-        DBOpenHelper
+        DBOpenHelper // SI NO, NO ANDA LA VARIABLE dbOpenHelper, revisar despues.
         dbOpenHelper = new DBOpenHelper(context);
         SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
         dbOpenHelper.SaveEvent(event, time, date, month, year, database);
@@ -153,7 +158,7 @@ public class CustomCalendarView extends LinearLayout {
 
     }
     private void SetUpCalendar(){
-        String currwntDate = dateFormat.format(calendar.getTime());
+        String currwntDate = dateFormat.format(calendar.getTime()); //EL NOMBRE DE LA VARIABLE ES RARO, SÍ.  PERO EL VIDEO QUE SEGUÍ LA PONE ASÍ.
         currentDate.setText(currwntDate);
 
         dates.clear();
@@ -167,6 +172,10 @@ public class CustomCalendarView extends LinearLayout {
         monthCalendar.add(Calendar.DAY_OF_MONTH, 1);
 
         }
+
+        myGridAdapter = new MyGridAdapter(context, dates, calendar, eventsList);
+        gridView.setAdapter(myGridAdapter);
+
 
     }
 }
