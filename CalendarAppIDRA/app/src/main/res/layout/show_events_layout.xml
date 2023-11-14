@@ -11,4 +11,5 @@
         android:id="@+id/EventsRV"
         android:layout_margin="5dp"/>
 
+
 </LinearLayout>
