@@ -55,4 +55,13 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         String [] SelectionArgs = {month, year};
         return database.query(DBStructure.EVENT_TABLE_NAME, Projections, Selections, SelectionArgs, null, null, null);
     }
+
+    public void deleteEvent(String event, String date, String time, SQLiteDatabase database)
+    {
+        String selection = DBStructure.EVENT+"=? and "+DBStructure.DATE+"=? and "+DBStructure.TIME+"=?";
+        String[] selectionArg = {event, date, time};
+        database.delete(DBStructure.EVENT_TABLE_NAME, selection, selectionArg);
+    }
+
+
 }
