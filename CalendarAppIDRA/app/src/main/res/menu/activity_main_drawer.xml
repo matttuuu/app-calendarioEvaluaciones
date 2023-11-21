@@ -21,7 +21,10 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Primer Calendario" />
 
-        />
-
+        <item
+            android:id="@+id/mainActivity2"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Segundo Calendario" />
+        
     </group>
 </menu>
