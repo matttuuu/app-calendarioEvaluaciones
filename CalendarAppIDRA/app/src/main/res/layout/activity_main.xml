@@ -7,18 +7,6 @@
     tools:context=".MainActivity"
     android:id="@+id/drawer">
 
-    <!--Dentro de estos include, vamos agregando todos los xml a nuestra vista-->
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/drawer_main_toolbar"
-    />
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/main_fragment_container"
-        />
-
     <!-- VISTA DEL CALENDARIO DEL INDIO UTURN-->
 
     <com.example.calendarapp_idra.CustomCalendarView
@@ -27,16 +15,6 @@
         android:id="@+id/custom_calendar_view"></com.example.calendarapp_idra.CustomCalendarView>
 
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:menu="@menu/drawer_menu"
-        app:headerLayout="@layout/drawer_header"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        />
-        <!--layout_gravity hace que el elemento se vaya hacia un lugar especifico -->
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.CalendarAppIDRA" parent="Base.Theme.CalendarAppIDRA" />
+    <style name="Theme.CalendarAppIDRA.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.CalendarAppIDRA.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.CalendarAppIDRA.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
