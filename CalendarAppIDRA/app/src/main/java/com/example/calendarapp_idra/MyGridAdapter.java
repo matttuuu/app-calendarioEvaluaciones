@@ -60,7 +60,7 @@ public class MyGridAdapter extends ArrayAdapter {
         }
 
         if (displayMonth == currentMonth && displayYear == currentYear){
-            view.setBackgroundColor(getContext().getResources().getColor(R.color.green));
+            view.setBackgroundColor(getContext().getResources().getColor(R.color.green)); //PARA CAMBIAR EL COLOR RESALTADOS DE LOS DÍAS DEL MES. EL COLOR ESTA ALOJADO EN RES/VALUES/COLORS.XML, AHI SE PUEDEN CREAR LOS QUE QUIERAS CON LAS ETIQUETAS.
         }
         else {
             view.setBackgroundColor(Color.parseColor("#cccccc"));

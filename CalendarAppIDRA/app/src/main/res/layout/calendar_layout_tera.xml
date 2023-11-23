@@ -10,7 +10,7 @@
         android:orientation="horizontal"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:background="@android:color/holo_green_dark">
+        android:background="#AF3109">
 
         <ImageButton
             android:layout_width="40dp"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Lun"
-            android:background="@android:color/holo_purple"
+            android:background="#FF9800"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:textStyle="bold"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Mie"
-            android:background="@android:color/holo_purple"
+            android:background="#FF9800"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:textStyle="bold"
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Vie"
-            android:background="@android:color/holo_purple"
+            android:background="#FF9800"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:textStyle="bold"

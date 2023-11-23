@@ -60,7 +60,7 @@ public class MyGridAdapterTerapeutico extends ArrayAdapter {
         }
 
         if (displayMonthTera == currentMonthTera && displayYearTera == currentYearTera){
-            view.setBackgroundColor(getContext().getResources().getColor(R.color.green));
+            view.setBackgroundColor(getContext().getResources().getColor(R.color.lightyellow)); //PARA CAMBIAR EL COLOR RESALTADOS DE LOS DÍAS DEL MES. EL COLOR ESTA ALOJADO EN RES/VALUES/COLORS.XML
         }
         else {
             view.setBackgroundColor(Color.parseColor("#cccccc"));

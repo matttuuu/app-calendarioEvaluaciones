@@ -2,7 +2,7 @@ package com.example.calendarapp_idra;
 
 public class DBStructureTerapeutico {
 
-    public static final String DB_NAME_TERA = "EVENTS_DB_TERA";
+    public static final String DB_NAME_TERA = "EVENTS_DB_TERA"; //TERAPEUTICO.
     public static final int DB_VERSION_TERA = 1;
     public static final String EVENT_TABLE_NAME_TERA ="eventstable";
     public static final String EVENT_TERA = "event";
