@@ -17,7 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button buttonSoft, buttonTera, buttonSegur, buttonEdu, buttonPsico;
+    private Button buttonSoft, buttonTera, buttonEdu, buttonPsico, buttonSeg;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         buttonTera = (Button) findViewById(R.id.buttonTerapeutico);
         buttonEdu = (Button) findViewById(R.id.buttonEducacion);
         buttonPsico = (Button) findViewById(R.id.buttonPsicopedagogia);
+        buttonSeg = (Button) findViewById(R.id.buttonSeguridadHigiene);
 
         buttonSoft.setOnClickListener(new View.OnClickListener() { //AL TOCAR EL BOTON, SE LLAMA AL METODO openActivity2, que por su nombre, abre la Activity2.
             @Override
@@ -56,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
                 openActivity6();
             }
         });
+
+        buttonSeg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity7();
+            }
+        });
+
     }
 
     public void openActivity2() { //METODO PARA ABRIR LA SEGUNDA ACTIVIDAD.
@@ -73,8 +82,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openActivity6() { //METODO PARA ABRIR LA QUINTA ACTIVIDAD.
+    public void openActivity6() { //METODO PARA ABRIR LA SEXTA ACTIVIDAD.
         Intent intent = new Intent(this, Activity6.class);
+        startActivity(intent);
+    }
+
+    public void openActivity7() { //METODO PARA ABRIR LA SEPTIMA ACTIVIDAD.
+        Intent intent = new Intent(this, Activity7.class);
         startActivity(intent);
     }
 }
