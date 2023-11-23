@@ -1,83 +1,94 @@
 package com.example.calendarapp_idra;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
 
-import Fragments.MonthlyFragment;
-import Fragments.WeeklyFragment;
+public class MainActivity extends AppCompatActivity {
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private Button buttonSoft, buttonTera, buttonEdu, buttonPsico, buttonSeg;
 
-    CustomCalendarView customCalendarView;
-    DrawerLayout drawerLayout;
-    ActionBarDrawerToggle actionBarDrawerToggle;
-    Toolbar tooolbar;
-    NavigationView navigationView;
-
-
-    FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
-
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tooolbar = findViewById(R.id.toolbar); //Referenciamos la variable de objeto toolbar al que tenemos en la vista main
-        setSupportActionBar(tooolbar);
-        customCalendarView = (CustomCalendarView)findViewById(R.id.custom_calendar_view); //CALENDAR VIEW
-        drawerLayout = findViewById(R.id.drawer); //Realizamos lo mismo :)
-        navigationView = findViewById(R.id.navigationView);
-        //onclick al navigationView
-        navigationView.setNavigationItemSelectedListener(this);
+        buttonSoft = (Button) findViewById(R.id.buttonSoftware);
+        buttonTera = (Button) findViewById(R.id.buttonTerapeutico);
+        buttonEdu = (Button) findViewById(R.id.buttonEducacion);
+        buttonPsico = (Button) findViewById(R.id.buttonPsicopedagogia);
+        buttonSeg = (Button) findViewById(R.id.buttonSeguridadHigiene);
 
+        buttonSoft.setOnClickListener(new View.OnClickListener() { //AL TOCAR EL BOTON, SE LLAMA AL METODO openActivity2, que por su nombre, abre la Activity2.
+            @Override
+            public void onClick(View v) {
+            openActivity2();
+            }
+        });
 
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,tooolbar,R.string.open,R.string.close); ///*BORRAR: Explicado" en minuto 17:35
-        drawerLayout.addDrawerListener(actionBarDrawerToggle); //Le añadimos un listener al drawerLayout
-        actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
-        actionBarDrawerToggle.syncState();
-        //Hacemos cargar el fragmento principal
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container,new MonthlyFragment());
-        fragmentTransaction.commit();
+        buttonTera.setOnClickListener(new View.OnClickListener() { //LO MISMO QUE EL DE ARRIBA, PERO EL METODO openActivity3.
+            @Override
+            public void onClick(View v) {
+                openActivity3();
+            }
+        });
+
+        buttonEdu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity5();
+            }
+        });
+
+        buttonPsico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity6();
+            }
+        });
+
+        buttonSeg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity7();
+            }
+        });
+
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (item.getItemId() == R.id.view_fragment1){
-            fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container,new MonthlyFragment());
-            fragmentTransaction.commit();
-        }
-        if (item.getItemId() == R.id.view_fragment2){
-            fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container,new WeeklyFragment());
-            fragmentTransaction.commit();
-        }
-
-        return false;
+    public void openActivity2() { //METODO PARA ABRIR LA SEGUNDA ACTIVIDAD.
+        Intent intent = new Intent(this, Activity2.class);
+        startActivity(intent);
     }
 
-    public void PreviousMonth(View view) {
+    public void openActivity3() { //METODO PARA ABRIR LA TERCERA ACTIVIDAD.
+        Intent intent = new Intent(this, Activity3.class);
+        startActivity(intent);
     }
 
-    public void NextMonth(View view) {
+    public void openActivity5() { //METODO PARA ABRIR LA QUINTA ACTIVIDAD.
+        Intent intent = new Intent(this, Activity5.class);
+        startActivity(intent);
+    }
+
+    public void openActivity6() { //METODO PARA ABRIR LA SEXTA ACTIVIDAD.
+        Intent intent = new Intent(this, Activity6.class);
+        startActivity(intent);
+    }
+
+    public void openActivity7() { //METODO PARA ABRIR LA SEPTIMA ACTIVIDAD.
+        Intent intent = new Intent(this, Activity7.class);
+        startActivity(intent);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.calendarapp_idra;
 
 public class DBStructure {
-    public static final String DB_NAME = "EVENTS_DB";
+    public static final String DB_NAME = "EVENTS_DB"; //SOFTWARE.
     public static final int DB_VERSION = 1;
     public static final String EVENT_TABLE_NAME="eventstable";
     public static final String EVENT = "event";
