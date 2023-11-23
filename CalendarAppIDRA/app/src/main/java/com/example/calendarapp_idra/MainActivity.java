@@ -17,7 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button buttonSoft, buttonTera, buttonEdu, buttonPsico, buttonSeg;
+    private Button buttonSoft, buttonTera, buttonEdu,buttonIng, buttonPsico, buttonSeg;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -27,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
         buttonSoft = (Button) findViewById(R.id.buttonSoftware);
         buttonTera = (Button) findViewById(R.id.buttonTerapeutico);
         buttonEdu = (Button) findViewById(R.id.buttonEducacion);
+        buttonIng = (Button) findViewById(R.id.buttonIngles);
         buttonPsico = (Button) findViewById(R.id.buttonPsicopedagogia);
         buttonSeg = (Button) findViewById(R.id.buttonSeguridadHigiene);
+
 
         buttonSoft.setOnClickListener(new View.OnClickListener() { //AL TOCAR EL BOTON, SE LLAMA AL METODO openActivity2, que por su nombre, abre la Activity2.
             @Override
@@ -65,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        buttonIng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity4();
+            }
+        });
+
     }
 
     public void openActivity2() { //METODO PARA ABRIR LA SEGUNDA ACTIVIDAD.
@@ -74,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActivity3() { //METODO PARA ABRIR LA TERCERA ACTIVIDAD.
         Intent intent = new Intent(this, Activity3.class);
+        startActivity(intent);
+    }
+
+    public void openActivity4() { //METODO PARA ABRIR LA CUARTA ACTIVIDAD.
+        Intent intent = new Intent(this, Activity4.class);
         startActivity(intent);
     }
 

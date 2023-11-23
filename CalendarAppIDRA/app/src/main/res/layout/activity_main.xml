@@ -120,6 +120,16 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonSeguridadHigiene"
         app:layout_constraintStart_toStartOf="@+id/buttonSeguridadHigiene" />
 
+    <Button
+        android:id="@+id/buttonIngles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="INGLES"
+        app:layout_constraintEnd_toEndOf="@+id/buttonSoftware"
+        app:layout_constraintStart_toStartOf="@+id/buttonSoftware"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
