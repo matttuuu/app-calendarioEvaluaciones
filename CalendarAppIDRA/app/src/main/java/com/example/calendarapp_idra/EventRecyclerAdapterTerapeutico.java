@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class EventRecyclerAdapterTerapeutico extends RecyclerView.Adapter<EventRecyclerAdapterTerapeutico.MyViewHolderTerapeutico> {
     Context contextTera;
     ArrayList<EventsTerapeutico> arrayListTera;
-    DBOpenHelper dbOpenHelperTera;
+    DBOpenHelperTerapeutico dbOpenHelperTera;
 
     public EventRecyclerAdapterTerapeutico(Context contextTera, ArrayList<EventsTerapeutico> arrayList) {
         this.contextTera = contextTera;
@@ -72,7 +72,7 @@ public class EventRecyclerAdapterTerapeutico extends RecyclerView.Adapter<EventR
     }
 
     private void deleteCalendarEvent(String event, String date, String time){
-        dbOpenHelperTera = new DBOpenHelper(contextTera);
+        DBOpenHelperTerapeutico dbOpenHelperTera = new DBOpenHelperTerapeutico(contextTera);
         SQLiteDatabase database = dbOpenHelperTera.getWritableDatabase();
         dbOpenHelperTera.deleteEvent(event, date, time, database);
         dbOpenHelperTera.close();

@@ -12,6 +12,8 @@ import android.os.Bundle;
 
 public class Activity2 extends AppCompatActivity {
 
+    //SOFTWARE.
+
     CustomCalendarView customCalendarView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

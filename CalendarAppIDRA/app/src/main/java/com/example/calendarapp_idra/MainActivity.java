@@ -16,7 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button buttonSoft, buttonTera, buttonSegur;
+    private Button buttonSoft, buttonTera, buttonSegur, buttonEdu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +24,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         buttonSoft = (Button) findViewById(R.id.buttonSoftware);
         buttonTera = (Button) findViewById(R.id.buttonTerapeutico);
+        buttonEdu = (Button) findViewById(R.id.buttonEducacion);
 
         buttonSoft.setOnClickListener(new View.OnClickListener() { //AL TOCAR EL BOTON, SE LLAMA AL METODO openActivity2, que por su nombre, abre la Activity2.
             @Override
             public void onClick(View v) {
             openActivity2();
-
             }
         });
 
@@ -37,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openActivity3();
+            }
+        });
+
+        buttonEdu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity5();
             }
         });
 
@@ -50,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActivity3() { //METODO PARA ABRIR LA TERCERA ACTIVIDAD.
         Intent intent = new Intent(this, Activity3.class);
+        startActivity(intent);
+    }
+
+    public void openActivity5() { //METODO PARA ABRIR LA QUINTA ACTIVIDAD.
+        Intent intent = new Intent(this, Activity5.class);
         startActivity(intent);
     }
 }
