@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,8 +17,9 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button buttonSoft, buttonTera, buttonSegur, buttonEdu;
+    private Button buttonSoft, buttonTera, buttonSegur, buttonEdu, buttonPsico;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSoft = (Button) findViewById(R.id.buttonSoftware);
         buttonTera = (Button) findViewById(R.id.buttonTerapeutico);
         buttonEdu = (Button) findViewById(R.id.buttonEducacion);
+        buttonPsico = (Button) findViewById(R.id.buttonPsicopedagogia);
 
         buttonSoft.setOnClickListener(new View.OnClickListener() { //AL TOCAR EL BOTON, SE LLAMA AL METODO openActivity2, que por su nombre, abre la Activity2.
             @Override
@@ -47,7 +50,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        buttonPsico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity6();
+            }
+        });
     }
 
     public void openActivity2() { //METODO PARA ABRIR LA SEGUNDA ACTIVIDAD.
@@ -62,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActivity5() { //METODO PARA ABRIR LA QUINTA ACTIVIDAD.
         Intent intent = new Intent(this, Activity5.class);
+        startActivity(intent);
+    }
+
+    public void openActivity6() { //METODO PARA ABRIR LA QUINTA ACTIVIDAD.
+        Intent intent = new Intent(this, Activity6.class);
         startActivity(intent);
     }
 }
