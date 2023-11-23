@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Activity3">
 
-    <com.example.calendarapp_idra.CustomCalendarView
+    <com.example.calendarapp_idra.CustomCalendarViewTerapeutico
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/custom_calendar_view_terapeutico"></com.example.calendarapp_idra.CustomCalendarView>
+        android:id="@+id/custom_calendar_view_terapeutico"></com.example.calendarapp_idra.CustomCalendarViewTerapeutico>
 
 </RelativeLayout>
 
