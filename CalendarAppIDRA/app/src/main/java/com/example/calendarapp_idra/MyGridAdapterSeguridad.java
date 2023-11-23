@@ -58,7 +58,7 @@ public class MyGridAdapterSeguridad extends ArrayAdapter {
         }
 
         if (displayMonthSeg == currentMonthSeg && displayYearSeg == currentYearSeg){
-            view.setBackgroundColor(getContext().getResources().getColor(R.color.lightyellow)); //PARA CAMBIAR EL COLOR RESALTADOS DE LOS DÍAS DEL MES. EL COLOR ESTA ALOJADO EN RES/VALUES/COLORS.XML
+            view.setBackgroundColor(getContext().getResources().getColor(R.color.lightgreen)); //PARA CAMBIAR EL COLOR RESALTADOS DE LOS DÍAS DEL MES. EL COLOR ESTA ALOJADO EN RES/VALUES/COLORS.XML
         }
         else {
             view.setBackgroundColor(Color.parseColor("#cccccc"));

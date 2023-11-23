@@ -58,7 +58,7 @@ public class MyGridAdapterPsicopedagogia extends ArrayAdapter {
         }
 
         if (displayMonthPsico == currentMonthPsico && displayYearPsico == currentYearPsico){
-            view.setBackgroundColor(getContext().getResources().getColor(R.color.lightyellow)); //PARA CAMBIAR EL COLOR RESALTADOS DE LOS DÍAS DEL MES. EL COLOR ESTA ALOJADO EN RES/VALUES/COLORS.XML
+            view.setBackgroundColor(getContext().getResources().getColor(R.color.lilac)); //PARA CAMBIAR EL COLOR RESALTADOS DE LOS DÍAS DEL MES. EL COLOR ESTA ALOJADO EN RES/VALUES/COLORS.XML
         }
         else {
             view.setBackgroundColor(Color.parseColor("#cccccc"));
