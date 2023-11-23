@@ -1,29 +1,26 @@
 package com.example.calendarapp_idra;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.material.navigation.NavigationView;
-
 public class MainActivity extends AppCompatActivity {
 
-    private Button buttonSoft, buttonTera, buttonSegur;
+    private Button buttonSoft, buttonTera, buttonIng;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buttonSoft = (Button) findViewById(R.id.buttonSoftware);
         buttonTera = (Button) findViewById(R.id.buttonTerapeutico);
+
+        buttonIng = (Button) findViewById(R.id.buttonIngles);
 
         buttonSoft.setOnClickListener(new View.OnClickListener() { //AL TOCAR EL BOTON, SE LLAMA AL METODO openActivity2, que por su nombre, abre la Activity2.
             @Override
@@ -41,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        buttonIng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity4();
+            }
+        });
+
     }
 
     public void openActivity2() { //METODO PARA ABRIR LA SEGUNDA ACTIVIDAD.
@@ -52,4 +56,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Activity3.class);
         startActivity(intent);
     }
+
+    public void openActivity4() {
+        Intent intent = new Intent(this, Activity4.class);
+        startActivity(intent);
+    }
+
+
 }

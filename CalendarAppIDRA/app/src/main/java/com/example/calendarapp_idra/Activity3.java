@@ -15,4 +15,5 @@ public class Activity3 extends AppCompatActivity {
         customCalendarViewTera = (CustomCalendarViewTerapeutico) findViewById(R.id.custom_calendar_view_terapeutico);
 
     }
+
 }

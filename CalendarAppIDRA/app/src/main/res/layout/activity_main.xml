@@ -38,16 +38,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/buttonSeguridadHigiene"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="256dp"
-        android:text="SEGURIDAD/HIGIENE"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/buttonTerapeutico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,10 +51,13 @@
         android:id="@+id/buttonEducacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
         android:layout_marginEnd="5dp"
+        android:layout_marginBottom="13dp"
         android:text="EDUCACION INICIAL"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonIngles"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonSeguridadHigiene" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView2"
@@ -80,11 +73,21 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
         android:layout_marginEnd="23dp"
-        android:layout_marginBottom="12dp"
         android:text="ACTIVITY_4"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSeguridadHigiene"
-        app:layout_constraintEnd_toEndOf="@+id/buttonSoftware" />
+        app:layout_constraintEnd_toEndOf="@+id/buttonSoftware"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSoftware" />
+
+    <Button
+        android:id="@+id/buttonIngles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="26dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

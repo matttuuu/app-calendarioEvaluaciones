@@ -1,5 +1,7 @@
 package com.example.calendarapp_idra;
 
+import android.widget.LinearLayout;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
@@ -32,7 +34,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
-public class CustomCalendarView extends LinearLayout {
+import Class_Ingles.DBOpenHelperIngles;
+import Class_Ingles.DBStructureIngles;
+import Class_Ingles.EventRecyclerAdapterIngles;
+import Class_Ingles.EventsIngles;
+import Class_Ingles.MyGridAdapterIngles;
+
+public class CustomCalendarViewIngles extends LinearLayout {
+
     ImageButton nextButton, previousButton;
     TextView currentDate;
     GridView gridView;
@@ -42,25 +51,26 @@ public class CustomCalendarView extends LinearLayout {
     Context context;
     SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM yyyy", Locale.ENGLISH);
     SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.ENGLISH);
-    SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.ENGLISH);
-    SimpleDateFormat eventDateFormate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+    SimpleDateFormat yearFormat= new SimpleDateFormat("yyyy", Locale.ENGLISH);
+    SimpleDateFormat eventDateFormat= new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
 
 
-    MyGridAdapter myGridAdapter;
-    AlertDialog alertDialog;
-    List<Date> dates = new ArrayList<>();
-    List<Events> eventsList = new ArrayList<>();
+    MyGridAdapterIngles myGridAdapter;
+    AlertDialog alertDialogIngles;
+    List<Date> dates= new ArrayList<>();
+    List<EventsIngles> eventsList = new ArrayList<>();
 
-    public CustomCalendarView(Context context) {
+    public CustomCalendarViewIngles(Context context) {
         super(context);
     }
 
-    public CustomCalendarView(Context context, @Nullable AttributeSet attrs) {
+    public CustomCalendarViewIngles(Context context, @Nullable AttributeSet attrs){
         super(context, attrs);
-        this.context = context;
+        this.context = context; //Probar si es mas eficiente dejar variables con nombres mas genericos en vez de especificar "_Ingles" O "_INGLES"
         InitializeLayout();
         SetUpCalendar();
+
         previousButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,17 +93,17 @@ public class CustomCalendarView extends LinearLayout {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setCancelable(true);
-                View addView = LayoutInflater.from(parent.getContext()).inflate(R.layout.add_newevent_layout, null);
-                EditText EventName = addView.findViewById(R.id.eventname);
-                TextView EventTime = addView.findViewById(R.id.eventtime);
-                ImageButton SetTime = addView.findViewById(R.id.seteventtime);
-                Button AddEvent = addView.findViewById(R.id.addevent);
+                View addView = LayoutInflater.from(parent.getContext()).inflate(R.layout.add_newevent_layout_ingles, null);
+                EditText EventName = addView.findViewById(R.id.eventnameIngles); //CAMBIAR IDS DE LAYOUT XML
+                TextView EventTime = addView.findViewById(R.id.eventtimeIngles); //
+                ImageButton SetTime = addView.findViewById(R.id.seteventtimeIngles); //
+                Button AddEvent = addView.findViewById(R.id.addeventIngles); // *
                 SetTime.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                      Calendar calendar = Calendar.getInstance();
-                      int hours = calendar.get(Calendar.HOUR_OF_DAY);
-                      int minuts = calendar.get(Calendar.MINUTE);
+                        Calendar calendar = Calendar.getInstance();
+                        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+                        int minuts = calendar.get(Calendar.MINUTE);
                         TimePickerDialog timePickerDialog = new TimePickerDialog(addView.getContext(), androidx.appcompat.R.style.Theme_AppCompat_Dialog,
                                 new TimePickerDialog.OnTimeSetListener() {
                                     @Override
@@ -111,7 +121,7 @@ public class CustomCalendarView extends LinearLayout {
 
                     }
                 });
-                final String date = eventDateFormate.format(dates.get(position));
+                final String date = eventDateFormat.format(dates.get(position));
                 final String month = monthFormat.format(dates.get(position));
                 final String year = yearFormat.format(dates.get(position));
 
@@ -120,14 +130,14 @@ public class CustomCalendarView extends LinearLayout {
                     public void onClick(View v) {
                         SaveEvent(EventName.getText().toString(),EventTime.getText().toString(), date, month, year);
                         SetUpCalendar();
-                        alertDialog.dismiss();
+                        alertDialogIngles.dismiss();
                     }
                 });
 
                 builder.setView(addView);
-                alertDialog = builder.create();
-                alertDialog.show();
-                alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                alertDialogIngles = builder.create();
+                alertDialogIngles.show();
+                alertDialogIngles.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
                         SetUpCalendar();
@@ -142,45 +152,42 @@ public class CustomCalendarView extends LinearLayout {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String date = eventDateFormate.format(dates.get(position));
+                String date = eventDateFormat.format(dates.get(position));
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setCancelable(true);
-                View showView = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_events_layout, null);
-                RecyclerView recyclerView = showView.findViewById(R.id.EventsRV);
+                View showView = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_events_layout_ingles, null);
+                RecyclerView recyclerView = showView.findViewById(R.id.EventsRVIngles);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(showView.getContext());
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setHasFixedSize(true);
-                EventRecyclerAdapter eventRecyclerAdapter = new EventRecyclerAdapter(showView.getContext(),
+                EventRecyclerAdapterIngles eventRecyclerAdapterIngles = new EventRecyclerAdapterIngles(showView.getContext(),
                         CollectEventByDate(date));
-                recyclerView.setAdapter(eventRecyclerAdapter);
-                eventRecyclerAdapter.notifyDataSetChanged();
+                recyclerView.setAdapter(eventRecyclerAdapterIngles);
+                eventRecyclerAdapterIngles.notifyDataSetChanged();
 
                 builder.setView(showView);
-                alertDialog = builder.create();
-                alertDialog.show();
+                alertDialogIngles = builder.create();
+                alertDialogIngles.show();
 
 
                 return true;
             }
         });
 
-
-
-
     }
 
-    private ArrayList<Events> CollectEventByDate(String date) {
-        ArrayList<Events> arrayList = new ArrayList<>();
-        DBOpenHelper dbOpenHelper = new DBOpenHelper(context); //DBOPENHELPER TAMBIÉN PUESTO, NO SÉ SI ESTA BIEN.
+    private ArrayList<EventsIngles> CollectEventByDate(String date) {
+        ArrayList<EventsIngles> arrayList = new ArrayList<>();
+        DBOpenHelperIngles dbOpenHelper = new DBOpenHelperIngles(context); //DBOPENHELPER TAMBIÉN PUESTO, NO SÉ SI ESTA BIEN.
         SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
         Cursor cursor = dbOpenHelper.ReadEvents(date, database);
         while (cursor.moveToNext()) {
-            @SuppressLint("Range") String event = cursor.getString(cursor.getColumnIndex(DBStructure.EVENT)); //LOS SUPRESSLINT SON INVENCIÓN MÍA, EN CASO DE ERROR AL USAR ESTE MÉTODO, BORRALO BEBEEE
-            @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex(DBStructure.TIME));
-            @SuppressLint("Range") String Date = cursor.getString(cursor.getColumnIndex(DBStructure.DATE));
-            @SuppressLint("Range") String month = cursor.getString(cursor.getColumnIndex(DBStructure.MONTH));
-            @SuppressLint("Range") String Year = cursor.getString(cursor.getColumnIndex(DBStructure.YEAR));
-            Events events = new Events(event, time, Date, month, Year);
+            @SuppressLint("Range") String event = cursor.getString(cursor.getColumnIndex(DBStructureIngles.EVENT_INGLES)); //LOS SUPRESSLINT SON INVENCIÓN MÍA, EN CASO DE ERROR AL USAR ESTE MÉTODO, BORRALO BEBEEE
+            @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex(DBStructureIngles.TIME_INGLES));
+            @SuppressLint("Range") String Date = cursor.getString(cursor.getColumnIndex(DBStructureIngles.DATE_INGLES));
+            @SuppressLint("Range") String month = cursor.getString(cursor.getColumnIndex(DBStructureIngles.MONTH_INGLES));
+            @SuppressLint("Range") String Year = cursor.getString(cursor.getColumnIndex(DBStructureIngles.YEAR_INGLES));
+            EventsIngles events = new EventsIngles(event, time, Date, month, Year);
             arrayList.add(events);
 
         }
@@ -190,16 +197,14 @@ public class CustomCalendarView extends LinearLayout {
         return arrayList;
     }
 
-
-
-    public CustomCalendarView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CustomCalendarViewIngles(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     private void SaveEvent (String event, String time, String date, String month, String year){
 
 
-        DBOpenHelper dbOpenHelper = new DBOpenHelper(context); // SI NO, NO ANDA LA VARIABLE dbOpenHelper, revisar despues.
+        DBOpenHelperIngles dbOpenHelper = new DBOpenHelperIngles(context); // SI NO, NO ANDA LA VARIABLE dbOpenHelper, revisar despues.
         SQLiteDatabase database = dbOpenHelper.getWritableDatabase();
         dbOpenHelper.SaveEvent(event, time, date, month, year, database);
         dbOpenHelper.close();
@@ -207,19 +212,21 @@ public class CustomCalendarView extends LinearLayout {
 
 
     }
+
     @SuppressLint("MissingInflatedId")
     private void InitializeLayout(){
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.calendar_layout, this);
-        nextButton = view.findViewById(R.id.nextBtn);
-        previousButton = view.findViewById(R.id.previousBtn);
+        View view = inflater.inflate(R.layout.calendar_ingles_layout, this); //
+        nextButton = view.findViewById(R.id.nextBtnIngles); //va a tirar error cuando ponga distintos ids en el layout
+        previousButton = view.findViewById(R.id.previousBtnIngles);
         currentDate = view.findViewById(R.id.current_DateIngles);
-        gridView = view.findViewById(R.id.gridview);
+        gridView = view.findViewById(R.id.gridviewIngles);
 
     }
+
     private void SetUpCalendar(){
-        String currwntDate = dateFormat.format(calendar.getTime()); //EL NOMBRE DE LA VARIABLE ES RARO, SÍ.  PERO EL VIDEO QUE SEGUÍ LA PONE ASÍ.
-        currentDate.setText(currwntDate);
+        String currwntDateIngles = dateFormat.format(calendar.getTime()); //EL NOMBRE DE LA VARIABLE ES RARO, SÍ.  PERO EL VIDEO QUE SEGUÍ LA PONE ASÍ.
+        currentDate.setText(currwntDateIngles);
 
         dates.clear();
         Calendar monthCalendar = (Calendar) calendar.clone();
@@ -229,12 +236,12 @@ public class CustomCalendarView extends LinearLayout {
         CollectEventsPerMonth(monthFormat.format(calendar.getTime()), yearFormat.format(calendar.getTime()));
 
         while (dates.size() < MAX_CALENDAR_DAYS) {
-        dates.add(monthCalendar.getTime());
-        monthCalendar.add(Calendar.DAY_OF_MONTH, 1);
+            dates.add(monthCalendar.getTime());
+            monthCalendar.add(Calendar.DAY_OF_MONTH, 1);
 
         }
 
-        myGridAdapter = new MyGridAdapter(context, dates, calendar, eventsList);
+        myGridAdapter = new MyGridAdapterIngles(context, dates, calendar, eventsList);
         gridView.setAdapter(myGridAdapter);
 
 
@@ -244,25 +251,23 @@ public class CustomCalendarView extends LinearLayout {
 
 
         eventsList.clear();
-        DBOpenHelper dbOpenHelper = new DBOpenHelper(context); //REVISAR DESPUÉS PROBLEMA CON DB
-        SQLiteDatabase database = dbOpenHelper.getReadableDatabase();
-        Cursor cursor = dbOpenHelper.ReadEventsperMonth(Month, year, database);
+        DBOpenHelperIngles dbhelper = new DBOpenHelperIngles(context); //REVISAR DESPUÉS PROBLEMA CON DB
+        SQLiteDatabase database = dbhelper.getReadableDatabase();
+        Cursor cursor = dbhelper.ReadEventsperMonth(Month, year, database);
 
         while (cursor.moveToNext()) {
-            @SuppressLint("Range") String event = cursor.getString(cursor.getColumnIndex(DBStructure.EVENT)); //LOS SUPRESSLINT SON INVENCIÓN MÍA, EN CASO DE ERROR AL USAR ESTE MÉTODO, BORRALO BEBEEE
-            @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex(DBStructure.TIME));
-            @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex(DBStructure.DATE));
-            @SuppressLint("Range") String month = cursor.getString(cursor.getColumnIndex(DBStructure.MONTH));
-            @SuppressLint("Range") String Year = cursor.getString(cursor.getColumnIndex(DBStructure.YEAR));
-            Events events = new Events(event, time, date, month, Year);
+            @SuppressLint("Range") String event = cursor.getString(cursor.getColumnIndex(DBStructureIngles.EVENT_INGLES)); //LOS SUPRESSLINT SON INVENCIÓN MÍA, EN CASO DE ERROR AL USAR ESTE MÉTODO, BORRALO BEBEEE
+            @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex(DBStructureIngles.TIME_INGLES));
+            @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex(DBStructureIngles.DATE_INGLES));
+            @SuppressLint("Range") String month = cursor.getString(cursor.getColumnIndex(DBStructureIngles.MONTH_INGLES));
+            @SuppressLint("Range") String Year = cursor.getString(cursor.getColumnIndex(DBStructureIngles.YEAR_INGLES));
+            EventsIngles events = new EventsIngles(event, time, date, month, Year);
             eventsList.add(events);
 
         }
         cursor.close();
-        dbOpenHelper.close();
+        dbhelper.close();
 
     }
-
-
 
 }

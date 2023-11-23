@@ -25,7 +25,7 @@
             android:gravity="center"
             android:layout_marginTop="4dp"
             android:text="CurrentDate"
-            android:id="@+id/current_Date"
+            android:id="@+id/current_DateIngles"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textSize="18sp"

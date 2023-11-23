@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/darker_gray"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@android:color/holo_orange_light">
 
     <EditText
-        android:id="@+id/eventname"
+        android:id="@+id/eventnameIngles"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="20dp"
@@ -14,41 +13,38 @@
         android:gravity="center"
         android:hint="Nombre de examen / evento"
         android:inputType="textShortMessage" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <ImageButton
-            android:id="@+id/seteventtime"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:background="@mipmap/timebtn"
             android:layout_margin="10dp"
-            android:background="@mipmap/timebtn" />
-
+            android:id="@+id/seteventtimeIngles"/>
         <TextView
-            android:id="@+id/eventtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
             android:text="00:00 AM"
-            android:textColor="@android:color/white"
+            android:gravity="center"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:id="@+id/eventtimeIngles"
+            android:layout_margin="10dp"/>
     </LinearLayout>
 
     <Button
-        android:id="@+id/addevent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Add Event"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:background="@android:color/white"
-        android:text="Add Event"
         android:textAllCaps="false"
+        android:textStyle="bold"
         android:textColor="@android:color/black"
-        android:textStyle="bold" />
+        android:background="@android:color/white"
+        android:id="@+id/addeventIngles"/>
 
 </LinearLayout>
